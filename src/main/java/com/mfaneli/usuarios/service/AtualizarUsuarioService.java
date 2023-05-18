@@ -20,6 +20,8 @@ public class AtualizarUsuarioService {
         usuarioSalvo.setDataNascimento(usuario.getDataNascimento());
         usuarioSalvo.setHabilidades(usuario.getHabilidades());
 
+        usuarioSalvo.validar();
+
         return usuarioRepository.save(usuario);
     }
 }

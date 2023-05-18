@@ -1,5 +1,6 @@
 package com.mfaneli.usuarios.model;
 
+import com.mfaneli.usuarios.shared.exception.BusinessException;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -26,12 +27,18 @@ public class Usuario {
     private LocalDateTime dataCriacao;
     @Builder.Default
     private LocalDateTime dataAtualizacao = LocalDateTime.now();
-
     public boolean atingiuMaioridade() {
         return dataNascimento.isBefore(LocalDate.now().minusYears(18));
     }
-
     public boolean dominioEmailPermitido() {
         return email.endsWith("@gmail.com") || email.endsWith("@hotmail.com") || email.endsWith("@yahoo.com") || email.endsWith("@outlook.com");
+    }
+    public void validar() {
+        if (!atingiuMaioridade()) {
+            throw new BusinessException("Usuário não atingiu a maioridade");
+        }
+        if (!dominioEmailPermitido()){
+            throw new BusinessException("Domínio de e-mail não permitido");
+        }
     }
 }
