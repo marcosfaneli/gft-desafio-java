@@ -18,4 +18,9 @@ public class HandleAdviceException {
                 .toList();
 
     }
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ExceptionHandler(BusinessException.class)
+    public ErroMensagem handleBusinessException(BusinessException exception) {
+        return new ErroMensagem(exception.getMessage());
+    }
 }

@@ -1,23 +1,26 @@
 package com.mfaneli.usuarios.controller.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.*;
 import lombok.Getter;
 
-import java.time.LocalDate;
 import java.util.List;
 
 @Getter
 public class UsuarioRequest {
-    @NotNull
+    @NotBlank
+    @Pattern(regexp = "[a-zA-Z\\s]+", message = "O nome deve conter apenas letras")
     private String nome;
-    @Email
+    @Email(message = "O email deve ser válido")
     private String email;
-    @NotNull
+    @NotBlank
+    @Pattern(regexp = "[a-zA-Z0-9\\s]+", message = "O endereço deve conter apenas letras e números")
     private String endereco;
     @NotNull
     @JsonProperty("data_nascimento")
-    private LocalDate dataNascimento;
+    @Pattern(regexp = "\\d{2}/\\d{2}/\\d{4}", message = "A data de nascimento deve estar no formato dd/MM/yyyy")
+    private String dataNascimento;
+    @NotNull
+    @Size(min = 1)
     private List<String> habilidades;
 }
