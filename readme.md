@@ -32,7 +32,7 @@ Acesse a pasta criada usando o terminal:
 
 Dentro da pasta, execute o seguinte comando para iniciar o contêiner
 
-`Docker: docker compose up`
+`docker compose up`
 
 Após seguir essas etapas, você poderá acessar a aplicação em seu navegador no endereço:
 
