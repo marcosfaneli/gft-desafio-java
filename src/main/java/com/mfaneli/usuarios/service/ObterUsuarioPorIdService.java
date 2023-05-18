@@ -1,4 +1,4 @@
-package com.mfaneli.usuarios.controller;
+package com.mfaneli.usuarios.service;
 
 import com.mfaneli.usuarios.model.Usuario;
 import com.mfaneli.usuarios.repository.UsuarioRepository;

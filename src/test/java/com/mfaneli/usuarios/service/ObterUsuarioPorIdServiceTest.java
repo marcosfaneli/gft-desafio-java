@@ -1,6 +1,5 @@
 package com.mfaneli.usuarios.service;
 
-import com.mfaneli.usuarios.controller.ObterUsuarioPorIdService;
 import com.mfaneli.usuarios.model.Usuario;
 import com.mfaneli.usuarios.repository.UsuarioRepository;
 import com.mfaneli.usuarios.shared.exception.UsuarioNaoEncontradoException;
