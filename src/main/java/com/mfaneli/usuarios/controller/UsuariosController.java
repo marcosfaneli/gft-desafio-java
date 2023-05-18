@@ -18,6 +18,7 @@ import java.util.List;
 public class UsuariosController {
     private final CriarUsuarioService criarUsuarioService;
     private final ListarUsuariosService listarUsuariosService;
+    private final ObterUsuarioPorIdService obterUsuarioPorIdService;
     private final UsuarioMapper usuarioMapper;
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
@@ -29,5 +30,9 @@ public class UsuariosController {
         return listarUsuariosService.executar().stream()
                 .map(usuarioMapper::map)
                 .toList();
+    }
+    @GetMapping("/{id}")
+    public UsuarioResponse findById(@PathVariable Integer id) {
+        return usuarioMapper.map(obterUsuarioPorIdService.executar(id));
     }
 }

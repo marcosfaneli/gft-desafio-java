@@ -23,4 +23,9 @@ public class HandleAdviceException {
     public ErroMensagem handleBusinessException(BusinessException exception) {
         return new ErroMensagem(exception.getMessage());
     }
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    @ExceptionHandler(UsuarioNaoEncontradoException.class)
+    public ErroMensagem handleUsuarioNaoEncontradoException(UsuarioNaoEncontradoException exception) {
+        return new ErroMensagem(exception.getMessage());
+    }
 }
